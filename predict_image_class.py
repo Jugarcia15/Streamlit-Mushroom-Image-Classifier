@@ -14,10 +14,12 @@ import numpy as np
 st.header("Mushroom Image Classifier")
 st.write("Using a MobileNetV3 model to classify the image.")
 
+show_sample_image = st.sidebar.button("Show Sample Image")
+generate_sample_prediction = st.sidebar.button("Predict Sample Image")
+
 upload_file = st.sidebar.file_uploader("Upload Mushroom Images", type = ['jpg','png','jpeg'])
 generate_prediction = st.sidebar.button("Predict Image")
-show_sample_image = st.button("Show Sample Image")
-generate_sample_prediction = st.button("Predict Sample Image")
+
 model = tf.keras.models.load_model('MN_Full_model.h5', custom_objects ={'KerasLayer':hub.KerasLayer})
 sample_image = Image.open('sample_image_rm.jpg')
 
