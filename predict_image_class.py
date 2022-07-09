@@ -13,7 +13,7 @@ import numpy as np
 
 st.header("Mushroom Image Classifier")
 st.write("Using a MobileNetV3 model to classify the image.")
-
+st.sidebar.write("Upload an image and submit for a prediction!")
 show_sample_image = st.sidebar.button("Show Sample Image")
 generate_sample_prediction = st.sidebar.button("Predict Sample Image")
 
@@ -69,3 +69,25 @@ if generate_sample_prediction:
     predictions=predict_sample_image(image3)
     print(predictions)
     st.write(predictions)
+    
+st.sidebar.write("Graphs regarding Model and Dataset")  
+
+graph1=Image.open('Dataset_Composition.jpg')
+graph2=Image.open('prediction_confidence.jpg')
+graph3=Image.open('tensorboard_graphs.jpg')
+
+show_graph1 = st.sidebar.button("Show Dataset Composition")
+if show_graph1:
+    with st.expander('image', expanded=True):
+        st.image(graph1, use_column_width=True)
+        
+show_graph2 = st.sidebar.button("Show Prediction Confidence Example")
+if show_graph2:
+    with st.expander('image', expanded=True):
+        st.image(graph2, use_column_width=True)
+        
+show_graph3 = st.sidebar.button("Show Loss/Accuracy Graphs")
+if show_graph3:
+    with st.expander('image', expanded=True):
+        st.image(graph3, use_column_width=True)
+
